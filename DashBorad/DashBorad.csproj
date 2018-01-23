@@ -92,7 +92,7 @@
     </Reference>
     <Reference Include="UserControl, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\UserControl\bin\Debug\UserControl.dll</HintPath>
+      <HintPath>..\Reference\UserControl.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
