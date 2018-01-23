@@ -31,6 +31,8 @@ namespace DashBorad.com.tte.project
         DataTable Up_dt = new DataTable();
         DataTable Down_dt = new DataTable();
 
+        public bool isPost = true;
+
         public bool isOver;
 
         public int totalPage = 0;
@@ -117,6 +119,7 @@ namespace DashBorad.com.tte.project
                 errorHandler(0, "开始解析:" + filePath);
 
                 isOver = false;
+                isPost = true;
 
                 int upStartRow = 6;
                 int upEndRow = 16;
@@ -481,15 +484,33 @@ namespace DashBorad.com.tte.project
 
                 #region 复制Sheet
                 GC.Collect();
+
+                if (isPost)
+                {
+                    #region 复制BOM比对sheet
+                    //模板页Sheet
+                    transExcel.xlsBook = transExcel.xlsApp.Workbooks.Open(config.TemplateFolder, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+                    transExcel.xlsSheet = (Excel.Worksheet)transExcel.xlsBook.Sheets[2];
+                    //生成文件Sheet
+                    transExcel.xlsBook2 = transExcel.xlsApp.Workbooks.Open(filePath, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+                    transExcel.xlsSheet2 = (Excel.Worksheet)transExcel.xlsBook2.Sheets[2]; ;
+                    //将模板的格式复制过来
+                    transExcel.xlsSheet.Copy(transExcel.xlsSheet2, Type.Missing);
+                    transExcel.xlsBook2.Save();
+                    isPost = false;
+                    #endregion
+                }
+
                 //模板页Sheet
                 transExcel.xlsBook = transExcel.xlsApp.Workbooks.Open(config.TemplateFolder, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
                 transExcel.xlsSheet = (Excel.Worksheet)transExcel.xlsBook.ActiveSheet;
                 //生成文件Sheet
                 transExcel.xlsBook2 = transExcel.xlsApp.Workbooks.Open(filePath, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
-                transExcel.xlsSheet2 = (Excel.Worksheet)transExcel.xlsBook2.ActiveSheet;
+                transExcel.xlsSheet2 = (Excel.Worksheet)transExcel.xlsBook2.Sheets[1];
                 //将模板的格式复制过来
                 transExcel.xlsSheet.Copy(transExcel.xlsSheet2, Type.Missing);
                 #endregion
+
 
                 #region 填充Sheet
 
@@ -598,6 +619,7 @@ namespace DashBorad.com.tte.project
 
                 #endregion
 
+
                 #region 改Sheet名称
                 string sheetName = machineGroup + "-" + side + ((totalPage == 1) ? "" : "(" + currentPage + ")");//Sheet名称
                 //1,修改Sheet名称之前先将先前同名的删除掉
@@ -616,6 +638,7 @@ namespace DashBorad.com.tte.project
                 ((Excel.Worksheet)transExcel.xlsBook2.Sheets[totalPage - currentPage + 1]).Name = sheetName;
                 transExcel.xlsBook2.Save();
                 #endregion
+
 
                 if (isCleanSheet)
                     ExcelHelper.CleanSheet(transExcel.xlsApp, transExcel.xlsBook2);
