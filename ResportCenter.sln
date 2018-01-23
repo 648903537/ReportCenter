@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DashBorad", "DashBorad\DashBorad.csproj", "{C2F4C0C1-6551-4BFF-9387-7FA6060E7340}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserControl", "UserControl\UserControl.csproj", "{8EDF9FB0-0BE7-494C-AEEB-63C22D80D6F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataGridViewAutoFilter", "DataGridViewAutoFilter\DataGridViewAutoFilter.csproj", "{5A4B4B14-D3B5-4D54-80EC-0877C1E6E73A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C2F4C0C1-6551-4BFF-9387-7FA6060E7340}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2F4C0C1-6551-4BFF-9387-7FA6060E7340}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2F4C0C1-6551-4BFF-9387-7FA6060E7340}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2F4C0C1-6551-4BFF-9387-7FA6060E7340}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EDF9FB0-0BE7-494C-AEEB-63C22D80D6F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EDF9FB0-0BE7-494C-AEEB-63C22D80D6F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EDF9FB0-0BE7-494C-AEEB-63C22D80D6F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EDF9FB0-0BE7-494C-AEEB-63C22D80D6F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A4B4B14-D3B5-4D54-80EC-0877C1E6E73A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A4B4B14-D3B5-4D54-80EC-0877C1E6E73A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A4B4B14-D3B5-4D54-80EC-0877C1E6E73A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A4B4B14-D3B5-4D54-80EC-0877C1E6E73A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		VisualSVNWorkingCopyRoot = .
+	EndGlobalSection
+EndGlobal

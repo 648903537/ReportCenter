@@ -1,0 +1,336 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C2F4C0C1-6551-4BFF-9387-7FA6060E7340}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DashBorad</RootNamespace>
+    <AssemblyName>DashBorad</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>ATS_T_icon50x50.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CommonLibrary">
+      <HintPath>..\Reference\CommonLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="DataAccess">
+      <HintPath>..\Reference\DataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityCore">
+      <HintPath>..\Reference\EntityCore.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\Reference\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="IMSApiDotNet">
+      <HintPath>..\Reference\IMSApiDotNet.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.Excel">
+      <HintPath>..\Reference\Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\Reference\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.JScript" />
+    <Reference Include="NPOI">
+      <HintPath>..\Reference\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML">
+      <HintPath>..\Reference\NPOI.OOXML.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net">
+      <HintPath>..\Reference\NPOI.OpenXml4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats">
+      <HintPath>..\Reference\NPOI.OpenXmlFormats.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.DataAccess, Version=2.112.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Reference\Oracle.DataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TTEDataGrid">
+      <HintPath>..\Reference\TTEDataGrid.dll</HintPath>
+    </Reference>
+    <Reference Include="UserControl, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\UserControl\bin\Debug\UserControl.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="com.amtec.action\CommonFunction.cs" />
+    <Compile Include="com.amtec.action\ExcelHelper.cs" />
+    <Compile Include="com.amtec.action\GetCurrentWorkorder.cs" />
+    <Compile Include="com.amtec.action\GetProductQuantity.cs" />
+    <Compile Include="com.amtec.action\Hocy_Hook.cs" />
+    <Compile Include="com.amtec.action\LanguagePack.cs" />
+    <Compile Include="com.amtec.action\LogHelper.cs" />
+    <Compile Include="com.amtec.action\MutiLanguages.cs" />
+    <Compile Include="com.amtec.action\SocketClientHandler.cs" />
+    <Compile Include="com.amtec.action\SocketServerHandle.cs" />
+    <Compile Include="com.amtec.action\transExcel.cs" />
+    <Compile Include="com.amtec.action\UtilityFunction.cs" />
+    <Compile Include="com.amtec.configurations\ApplicationConfiguration.cs" />
+    <Compile Include="com.amtec.configurations\SessionContextHeandler.cs" />
+    <Compile Include="com.amtec.configurations\SystemVariable.cs" />
+    <Compile Include="com.amtec.forms\FinishPorductionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="com.amtec.forms\FinishPorductionForm.Designer.cs">
+      <DependentUpon>FinishPorductionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="com.amtec.forms\IQCForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="com.amtec.forms\IQCForm.Designer.cs">
+      <DependentUpon>IQCForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="com.amtec.forms\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="com.amtec.forms\LoginForm.designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="com.amtec.forms\ProductionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="com.amtec.forms\ProductionForm.Designer.cs">
+      <DependentUpon>ProductionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="com.amtec.forms\UIDRelationUserReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="com.amtec.forms\UIDRelationUserReport.Designer.cs">
+      <DependentUpon>UIDRelationUserReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="com.amtec.model\entity\GetStationSettingModel.cs" />
+    <Compile Include="com.amtec.model\entity\MaterialSpecItemEntity.cs" />
+    <Compile Include="com.amtec.model\entity\ProductEntity.cs" />
+    <Compile Include="com.tte.project\CreateLocator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="com.tte.project\CreateLocator.Designer.cs">
+      <DependentUpon>CreateLocator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="com.tte.project\InsertFujiTrax.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="com.tte.project\InsertFujiTrax.Designer.cs">
+      <DependentUpon>InsertFujiTrax.cs</DependentUpon>
+    </Compile>
+    <Compile Include="com.tte.project\PackBoxNumber.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="com.tte.project\PackBoxNumber.Designer.cs">
+      <DependentUpon>PackBoxNumber.cs</DependentUpon>
+    </Compile>
+    <Compile Include="com.tte.project\TransFujiZfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="com.tte.project\TransFujiZfile.Designer.cs">
+      <DependentUpon>TransFujiZfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="com.amtec.action\public_variable.cs" />
+    <Compile Include="com.amtec.action\WIN32API.cs" />
+    <EmbeddedResource Include="com.amtec.forms\FinishPorductionForm.resx">
+      <DependentUpon>FinishPorductionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="com.amtec.forms\IQCForm.resx">
+      <DependentUpon>IQCForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="com.amtec.forms\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="com.amtec.forms\ProductionForm.resx">
+      <DependentUpon>ProductionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="com.amtec.forms\UIDRelationUserReport.resx">
+      <DependentUpon>UIDRelationUserReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="com.tte.project\CreateLocator.resx">
+      <DependentUpon>CreateLocator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="com.tte.project\InsertFujiTrax.resx">
+      <DependentUpon>InsertFujiTrax.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="com.tte.project\PackBoxNumber.resx">
+      <DependentUpon>PackBoxNumber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="com.tte.project\TransFujiZfile.resx">
+      <DependentUpon>TransFujiZfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="ConfigFile.log4net">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="DataAccessConfiguration.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ihas.properties">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ApplicationConfig.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="ATS_A_icon50x50.ico" />
+    <Content Include="ATS_T_icon50x50.ico" />
+    <Content Include="iconAT.ico" />
+    <Content Include="language.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="pic\A_Logo_72x72.png" />
+    <Content Include="pic\datagrid_background.png" />
+    <Content Include="pic\DMS_100x50.png" />
+    <Content Include="Xml\MaterialSpec.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\DMS_logo.png" />
+    <None Include="Resources\DMS_100x50.png" />
+    <None Include="Resources\DataInput_BackGround_Silver.png" />
+    <None Include="Resources\Correct_Green1_128x128.png" />
+    <None Include="Resources\Correct_Green_128x128.png" />
+    <None Include="Resources\Closed_Gray_40x40.png" />
+    <None Include="Resources\Closed_Gray_32x32.png" />
+    <None Include="Resources\Close_Gray_100x100.png" />
+    <None Include="Resources\Close.png" />
+    <None Include="Resources\Clock_Blue_128x128.png" />
+    <None Include="Resources\Clock_Blue_40x40.png" />
+    <None Include="Resources\Chart_Column_Silver.png" />
+    <None Include="Resources\Caption_Orange.png" />
+    <None Include="Resources\Bar_Orange_1000x12.png" />
+    <None Include="Resources\Bar_Gray_100x12.png" />
+    <None Include="Resources\BackGround_Red_d_1438x102.png" />
+    <None Include="Resources\BackGround_Green_d_1438x102.png" />
+    <None Include="Resources\ATS_16x16.bmp" />
+    <None Include="Resources\A_Logo_72x72.png" />
+    <None Include="Resources\Yield_White.png" />
+    <None Include="Resources\Warning_55x50.png" />
+    <None Include="Resources\UserSkill_Red_32x32.png" />
+    <None Include="Resources\UserSkill_Green_32x32.png" />
+    <None Include="Resources\User_Green_32x32.png" />
+    <None Include="Resources\Unlock_White_24x24.png" />
+    <None Include="Resources\Title_Blue_Top.png" />
+    <None Include="Resources\TEST.png" />
+    <None Include="Resources\SwitchMainAppGrey36x36.png" />
+    <None Include="Resources\Station_Orange_72x72.png" />
+    <None Include="Resources\Station_icon_32x32.png" />
+    <None Include="Resources\Station_Blue_32x32.png" />
+    <None Include="Resources\Startup_Window_Matellic_400x200.png" />
+    <None Include="Resources\Startup_Window_400x200.png" />
+    <None Include="Resources\Staff_Blue_Green_128x128.png" />
+    <None Include="Resources\Staff_Blue_Green_32x32.png" />
+    <None Include="Resources\Setting_Gray_40x40.png" />
+    <None Include="Resources\Pass_Green1.png" />
+    <None Include="Resources\Pass_Green_1.png" />
+    <None Include="Resources\Pass_Green.png" />
+    <None Include="Resources\Pass_BackGround_Green.png" />
+    <None Include="Resources\Panel_Back_Silver_300x300.png" />
+    <None Include="Resources\ok.png" />
+    <None Include="Resources\NetWorkDisconnectedRed24x24.png" />
+    <None Include="Resources\NetWorkConnectedGreen24x24.png" />
+    <None Include="Resources\Mininized_Gray_40x40.png" />
+    <None Include="Resources\Maximized_Gray_100x100.png" />
+    <None Include="Resources\Maximized_Gray_40x40.png" />
+    <None Include="Resources\Maximized_Gray_32x322.png" />
+    <None Include="Resources\Maximized_Gray_32x321.png" />
+    <None Include="Resources\Maximized_Gray_32x32.png" />
+    <None Include="Resources\Maximized_Arrow_Gray_32x32.png" />
+    <None Include="Resources\Lock_Black_24x24.png" />
+    <None Include="Resources\InputData_Error_Red_400x200.png" />
+    <None Include="Resources\Info_Gray_40x40.png" />
+    <None Include="Resources\Form_BackGround.png" />
+    <None Include="Resources\Fail_Red.png" />
+    <None Include="Resources\Fail_BackGround_Red.png" />
+    <None Include="Resources\ErrorWindow_1200x400.png" />
+    <None Include="Resources\ErrorWindow_600x200.png" />
+    <None Include="Resources\DMS_logo64x24.png" />
+    <None Include="Resources\Image1.bmp" />
+    <None Include="pic\Frame1.png" />
+    <Content Include="pic\frame2.png" />
+    <Content Include="pic\header.png" />
+    <None Include="pic\refresh.png" />
+    <Content Include="pic\Startup_Window_Matellic_400x200.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="com.amtec.model\schema\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataGridViewAutoFilter\DataGridViewAutoFilter.csproj">
+      <Project>{5a4b4b14-d3b5-4d54-80ec-0877c1e6e73a}</Project>
+      <Name>DataGridViewAutoFilter</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

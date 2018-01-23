@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Root> 
+  <partNumberStart value="^PC5.*|^PC7.*|^PCH.*|^PCC.*">
+    <!--PC5、PC7、PCH、PCC开头-->  
+    <partNumber value=".{5}[R].">
+      <!--第6位为R-->  
+      <!--errorNumber:误差位数;errorValue:误差值;baseValue:基数;lowValue:负值;MaxValue:正值;Unit:单位-->  
+      <Item ErrorNumber="11" ErrorValue="C=0.25,D=0.5,B=0.1" BaseValue="E.G" LowValue="Q-P" MaxValue="Q+P" Unit="pf"/> 
+    </partNumber>  
+    <partNumber value=".+">
+      <!--满足partNumberStart开头的品号(默认)-->  
+      <Item ErrorNumber="11" ErrorValue="J=0.05,K=0.1,M=0.2" BaseValue="EF*(^10^G^)" LowValue="Q-Q*P" MaxValue="Q+Q*P" Unit="pf,nf,uf"/> 
+    </partNumber> 
+  </partNumberStart>  
+  <partNumberStart value="^PRC.*">
+    <!--PRC开头-->  
+    <partNumber value=".{5}[R].">
+      <!--第6位为R-->  
+      <Item ErrorNumber="8" ErrorValue="J=0.05,K=0.1,M=0.2" BaseValue="E.G" LowValue="Q-Q*P" MaxValue="Q+Q*P" Unit="OHM"/> 
+    </partNumber>  
+    <partNumber value=".+"> 
+      <Item ErrorNumber="8" ErrorValue="J=0.05,K=0.1,M=0.2" BaseValue="EF*(^10^G^)" LowValue="Q-Q*P" MaxValue="Q+Q*P" Unit="OHM,K OHM,M OHM"/> 
+    </partNumber> 
+  </partNumberStart>  
+  <partNumberStart value="^PRM.*">
+    <!--PRM开头-->
+    <partNumber value=".{6}[R].">
+      <!--第7位为R-->
+      <Item ErrorNumber="9" ErrorValue="1=0.01,2=0.02,5=0.005,6=0.0025,7=0.001" BaseValue="EF.H" LowValue="Q-Q*P" MaxValue="Q+Q*P" Unit="OHM"/>
+    </partNumber>
+    <partNumber value=".+"> 
+      <Item ErrorNumber="9" ErrorValue="1=0.01,2=0.02,5=0.005,6=0.0025,7=0.001" BaseValue="EFG*(^10^H^)" LowValue="Q-Q*P" MaxValue="Q+Q*P" Unit="OHM,K OHM,M OHM"/> 
+    </partNumber> 
+  </partNumberStart> 
+</Root>

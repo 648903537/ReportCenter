@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ApplicationConfig>
+  <LoginParameters>
+    <REFERENCE_STATION_NO>XOFL01-003-01</REFERENCE_STATION_NO>
+    <Client>01</Client>
+    <RegistrationType>S</RegistrationType>
+    <REFRESH_RATE>30</REFRESH_RATE>
+    <RefreshTimeSpan>60</RefreshTimeSpan>
+    <!--<AUTH_TEAM>IPQC;MR</AUTH_TEAM>-->
+    <AUTH_TEAM></AUTH_TEAM>
+
+    <!--原厂地址-->
+    <!--<IPAddress>172.17.1.5</IPAddress>
+    <lblCaptionsize>44</lblCaptionsize>
+    <PageSizeCount>25</PageSizeCount>
+    <Port>50100</Port>-->
+    
+    <!--实际生产-->
+    <!--<IPAddress>172.17.1.5</IPAddress>
+    <lblCaptionsize>44</lblCaptionsize>
+    <PageSizeCount>25</PageSizeCount>
+    <Port>50550</Port>-->
+    
+    <!--开发测试-->
+    <IPAddress>127.0.0.1</IPAddress>
+    <lblCaptionsize>44</lblCaptionsize>
+    <PageSizeCount>25</PageSizeCount>
+    <Port>50550</Port>
+
+    <LINE_DESCRIPTION>SMT01</LINE_DESCRIPTION>
+    <PageNextTimer>5</PageNextTimer>
+    <lblGridHeadersize>28</lblGridHeadersize>
+    <lblGridsize>27</lblGridsize>
+  </LoginParameters>
+
+  <TransFujiZfile>
+    <!--监控的文件夹路径(放置初始文件路径)-->
+    <FileFolder>D:\Z_files\</FileFolder>
+    <!--文件成功后存储的路径-->
+    <TransOK>D:\Z_files\history\</TransOK>
+    <!--文件失败后存储的路径-->
+    <TransError>D:\Z_files\error\</TransError>
+    <!--文件模板路径-->
+    <TemplateFolder>D:\Z_files\Template\Z_Template.xlsm</TemplateFolder>
+    <!--新文件生成路径-->
+    <GenerateFolder>D:\Z_files\file\</GenerateFolder>
+    <!--Sheet中间数据最大行高-->
+    <MaxRow>441</MaxRow>
+  </TransFujiZfile>
+  
+</ApplicationConfig>
