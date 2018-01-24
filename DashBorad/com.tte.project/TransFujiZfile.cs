@@ -31,8 +31,6 @@ namespace DashBorad.com.tte.project
         DataTable Up_dt = new DataTable();
         DataTable Down_dt = new DataTable();
 
-        public bool isPost = true;
-
         public bool isOver;
 
         public int totalPage = 0;
@@ -119,7 +117,6 @@ namespace DashBorad.com.tte.project
                 errorHandler(0, "开始解析:" + filePath);
 
                 isOver = false;
-                isPost = true;
 
                 int upStartRow = 6;
                 int upEndRow = 16;
@@ -165,30 +162,31 @@ namespace DashBorad.com.tte.project
                     return;
                 }
 
-                ExceptTransFileExt(Up_dt, Down_dt, 1, true, null);
+                //按照行高的方式来卡控
+                //ExceptTransFileExt(Up_dt, Down_dt, 1, true, null);
 
-                //bool transResult = true;
-                ////每页的行数
-                //int maxRow =Convert.ToInt32(config.MaxRow);
+                bool transResult = true;
+                //每页的行数
+                int maxRow = Convert.ToInt32(config.MaxRow);
 
-                //if (Down_dt.Rows.Count > maxRow)//这个21是按照打印最大行来设置的
-                //{
-                //    DataSet ds = SplitDataTable(Down_dt, maxRow);
-                //    int totalPages = ds.Tables.Count;
-                //    int currentPage = 1;
-                //    foreach (DataTable dt in ds.Tables)
-                //    {
-                //        if (currentPage == totalPages) isOver = true;
-                //        //只要循环有一次是错误的就要搬到错误文件夹路径
-                //        transResult = transResult == true ? ExceptTransFile(Up_dt, dt, currentPage, totalPages) : transResult;
-                //        currentPage++;
-                //    }
-                //}
-                //else
-                //{
-                //    isOver = true;
-                //    transResult = ExceptTransFile(Up_dt, Down_dt, 1, 1);
-                //}
+                if (Down_dt.Rows.Count > maxRow)//这个21是按照打印最大行来设置的
+                {
+                    DataSet ds = SplitDataTable(Down_dt, maxRow);
+                    int totalPages = ds.Tables.Count;
+                    int currentPage = 1;
+                    foreach (DataTable dt in ds.Tables)
+                    {
+                        if (currentPage == totalPages) isOver = true;
+                        //只要循环有一次是错误的就要搬到错误文件夹路径
+                        transResult = transResult == true ? ExceptTransFile(Up_dt, dt, currentPage, totalPages) : transResult;
+                        currentPage++;
+                    }
+                }
+                else
+                {
+                    isOver = true;
+                    transResult = ExceptTransFile(Up_dt, Down_dt, 1, 1);
+                }
 
                 if (transResult)
                 {
@@ -270,7 +268,7 @@ namespace DashBorad.com.tte.project
                 string filePath = config.GenerateFolder + partNumber + ".xlsm";
                 if (!File.Exists(filePath))
                 {
-                    ExcelHelper.CreateExcel(filePath);
+                    ExcelHelper.CopyFile(@"D:\Z_files\Template\Z_Template_02.xlsm", filePath);
                     errorHandler(0, "创建文件:" + filePath);
                     isCleanSheet = true;
                 }
@@ -284,7 +282,7 @@ namespace DashBorad.com.tte.project
                 xlsSheet = (Excel.Worksheet)xlsBook.ActiveSheet;
                 //生成文件Sheet
                 xlsBook_trans = xlsApp.Workbooks.Open(filePath, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
-                xlsSheet_trans = (Excel.Worksheet)xlsBook_trans.ActiveSheet;
+                xlsSheet_trans = (Excel.Worksheet)xlsBook_trans.Sheets[1];
                 //将模板的格式复制过来
                 xlsSheet.Copy(xlsSheet_trans, Type.Missing);
                 #endregion
@@ -335,18 +333,15 @@ namespace DashBorad.com.tte.project
                     string position = string.Empty;
                     int positionCount = 0;
                     GeneratePosition(row["Reference"].ToString(), out position, out positionCount);
+                    totalPositionCount += positionCount;
 
-                    //插入数据
-                    Excel.Range range = (Excel.Range)xlsSheet_trans.Rows[idx, Missing.Value];
-                    range.Rows.Insert(Excel.XlDirection.xlDown, Excel.XlInsertFormatOrigin.xlFormatFromLeftOrAbove);
+                    //插入数据(用固定的模板来做)
                     xlsSheet_trans.Cells[idx, 1] = zAxisNumber;
                     xlsSheet_trans.Cells[idx, 2] = rackType;
                     xlsSheet_trans.Cells[idx, 3] = partNumberSource;
                     xlsSheet_trans.Cells[idx, 4] = materialSpec;
                     xlsSheet_trans.Cells[idx, 5] = position;
                     xlsSheet_trans.Cells[idx, 8] = positionCount;
-
-                    totalPositionCount += positionCount;
 
                     //部品贴装位置要合并单元格
                     ExcelHelper.MerageCell(xlsBook_trans, idx, 5, idx, 7);
@@ -361,8 +356,6 @@ namespace DashBorad.com.tte.project
                 //添加行"以下空白"
                 if(isOver)
                 {
-                    Excel.Range range = (Excel.Range)xlsSheet_trans.Rows[idx, Missing.Value];
-                    range.Rows.Insert(Excel.XlDirection.xlDown, Excel.XlInsertFormatOrigin.xlFormatFromLeftOrAbove);
                     xlsSheet_trans.Cells[idx, 2] = "以下空白";
 
                     //部品贴装位置要合并单元格
@@ -372,7 +365,7 @@ namespace DashBorad.com.tte.project
                 }
 
                 //填充点数合并
-                xlsSheet_trans.Cells[idx + 1, 8] = totalPositionCount;
+                xlsSheet_trans.Cells[32, 8] = totalPositionCount;
 
                 #endregion
 
@@ -475,7 +468,8 @@ namespace DashBorad.com.tte.project
                 string filePath = config.GenerateFolder + partNumber + ".xlsm";
                 if (!File.Exists(filePath))
                 {
-                    ExcelHelper.CreateExcel(filePath);
+                    //ExcelHelper.CreateExcel(filePath);
+                    ExcelHelper.CopyFile(@"D:\Z_files\Template\Z_Template_02.xlsm", filePath);
                     errorHandler(0, "创建文件:" + filePath);
                     isCleanSheet = true;
                 }
@@ -484,22 +478,6 @@ namespace DashBorad.com.tte.project
 
                 #region 复制Sheet
                 GC.Collect();
-
-                if (isPost)
-                {
-                    #region 复制BOM比对sheet
-                    //模板页Sheet
-                    transExcel.xlsBook = transExcel.xlsApp.Workbooks.Open(config.TemplateFolder, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
-                    transExcel.xlsSheet = (Excel.Worksheet)transExcel.xlsBook.Sheets[2];
-                    //生成文件Sheet
-                    transExcel.xlsBook2 = transExcel.xlsApp.Workbooks.Open(filePath, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
-                    transExcel.xlsSheet2 = (Excel.Worksheet)transExcel.xlsBook2.Sheets[2]; ;
-                    //将模板的格式复制过来
-                    transExcel.xlsSheet.Copy(transExcel.xlsSheet2, Type.Missing);
-                    transExcel.xlsBook2.Save();
-                    isPost = false;
-                    #endregion
-                }
 
                 //模板页Sheet
                 transExcel.xlsBook = transExcel.xlsApp.Workbooks.Open(config.TemplateFolder, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);

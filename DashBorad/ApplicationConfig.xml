@@ -41,11 +41,11 @@
     <!--文件失败后存储的路径-->
     <TransError>D:\Z_files\error\</TransError>
     <!--文件模板路径-->
-    <TemplateFolder>D:\Z_files\Template\Z_Template.xlsm</TemplateFolder>
+    <TemplateFolder>D:\Z_files\Template\Z_Template_2018.xlsm</TemplateFolder>
     <!--新文件生成路径-->
     <GenerateFolder>D:\Z_files\file\</GenerateFolder>
     <!--Sheet中间数据最大行高-->
-    <MaxRow>441</MaxRow>
+    <MaxRow>23</MaxRow>
   </TransFujiZfile>
   
 </ApplicationConfig>

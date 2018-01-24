@@ -228,6 +228,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Template\Z_Template_02.xlsm" />
+    <None Include="Template\Z_Template_2018.xlsm" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

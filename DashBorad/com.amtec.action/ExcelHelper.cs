@@ -290,6 +290,14 @@ namespace com.amtec.action
             KillSpecialExcel(EApp);
         }
 
+        public static void CopyFile(string sourceFilePath,string copyToFilePath)
+        {
+            string sourceFile = sourceFilePath;
+            string destinationFile = copyToFilePath;
+            bool isrewrite = true; // true=覆盖已存在的同名文件,false则反之
+            System.IO.File.Copy(sourceFile, destinationFile, isrewrite);
+        }
+
         /// <summary>
         /// 清理无用的Sheet(xlsx文件格式)
         /// </summary>
