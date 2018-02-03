@@ -18,6 +18,10 @@ namespace DashBorad
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            //MES通过RFC连接SAP
+            //Application.Run(new MesConnectRfc());
+
             Application.Run(new LoginForm());
             //Application.Run(new UIDRelationUserReport());
             //Application.Run(new InsertFujiTrax());

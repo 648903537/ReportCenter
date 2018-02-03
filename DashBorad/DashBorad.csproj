@@ -77,6 +77,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Reference\Oracle.DataAccess.dll</HintPath>
     </Reference>
+    <Reference Include="sapnco">
+      <HintPath>..\Reference\sapnco.dll</HintPath>
+    </Reference>
+    <Reference Include="sapnco_utils">
+      <HintPath>..\Reference\sapnco_utils.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms" />
@@ -156,6 +162,12 @@
     <Compile Include="com.tte.project\InsertFujiTrax.Designer.cs">
       <DependentUpon>InsertFujiTrax.cs</DependentUpon>
     </Compile>
+    <Compile Include="com.tte.project\MesConnectRfc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="com.tte.project\MesConnectRfc.Designer.cs">
+      <DependentUpon>MesConnectRfc.cs</DependentUpon>
+    </Compile>
     <Compile Include="com.tte.project\PackBoxNumber.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -192,6 +204,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="com.tte.project\InsertFujiTrax.resx">
       <DependentUpon>InsertFujiTrax.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="com.tte.project\MesConnectRfc.resx">
+      <DependentUpon>MesConnectRfc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="com.tte.project\PackBoxNumber.resx">
       <DependentUpon>PackBoxNumber.cs</DependentUpon>
