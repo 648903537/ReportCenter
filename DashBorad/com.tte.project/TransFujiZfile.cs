@@ -268,7 +268,7 @@ namespace DashBorad.com.tte.project
                 string filePath = config.GenerateFolder + partNumber + ".xlsm";
                 if (!File.Exists(filePath))
                 {
-                    ExcelHelper.CopyFile(@"D:\Z_files\Template\Z_Template_02.xlsm", filePath);
+                    ExcelHelper.CopyFile(config.TemplateFolder, filePath);
                     errorHandler(0, "创建文件:" + filePath);
                     isCleanSheet = true;
                 }
